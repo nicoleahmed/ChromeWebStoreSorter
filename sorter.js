@@ -9,7 +9,7 @@ async function main() {
     console.clear();
     try {
         await validateUrl();
-        var startPrompt = confirm("Initiate sorting?");
+        var startPrompt = confirm("Start sorting?");
         console.clear();
     } catch (e) {
         return;
@@ -35,19 +35,21 @@ async function stop(reason) {
     }
 }
 
-async function blurPage(state) {
-    let style = "html { filter: blur(5px); }";
 
-    if (state) {
-        document.head.insertAdjacentHTML(
-            "beforeend",
-            `<style>${style}</style>`
-        );
-    } else {
-        document.head.querySelectorAll("style").forEach((element) => {
-            if (element.textContent.includes(style)) element.remove();
-        });
-    }
+async function blurPage(state) {
+  let style = "html { filter: blur(5px); }";
+
+  if (state) {
+    let styleEl = document.createElement('style');
+    styleEl.textContent = style;
+    document.head.appendChild(styleEl);
+  } else {
+    document.head.querySelectorAll("style").forEach(el => {
+      if (el.textContent.includes(style)) {
+        el.remove(); 
+      }
+    });
+  }
 }
 
 async function validateUrl() {
