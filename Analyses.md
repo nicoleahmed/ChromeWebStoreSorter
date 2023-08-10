@@ -15,6 +15,9 @@ If not enough results are returned (between 50-150 results) then you will not se
 ## Recommendations
 It's best to have an idea of the extension you want before searching on the Chrome Web Store as the algorithm in the Chrome Web Store does poorly at presenting the best options to users. It's also very well known that there are multiple security risks and that these can take months to get resolved by Google. Using the sort by popularity tool will help to make better informed choices and protect your security.
 
+|[Back to readme](https://github.com/nicoleahmed/ChromeWebStoreSorter/blob/main/README.md)|
+|---|
+
 # Results
 
 ## "Adblocker"
@@ -111,4 +114,7 @@ It's best to have an idea of the extension you want before searching on the Chro
 | 'Stels VPN - Free & Secure proxy' | 39 | 88 |
  | 'Mad Shark HTML 5 Game' | 0 | 19 | n |
 | 'Tidy Bookmarks Tree' | 38 | 59 | n | 'Ultimate Guitar Randomiser' | 3 | 20 | y |
-```
+
+
+|[Back to readme](https://github.com/nicoleahmed/ChromeWebStoreSorter/blob/main/README.md)|
+|---|
