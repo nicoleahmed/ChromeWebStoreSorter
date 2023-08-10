@@ -1,4 +1,4 @@
-# Comparison of page loads
+# Comparison of search results
 
 # Overview
 
