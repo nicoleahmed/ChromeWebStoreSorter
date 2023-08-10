@@ -72,11 +72,11 @@ Confirming you want to sort:
 ![Screenshot of initation](/images/start%20sorting.PNG)
 
 Checking if you want to filter to extensions:
-![Screenshot of script asking about extension filtering](/images/extensions%20check.png)
+![Screenshot of script asking about extension filtering](/images/extensions%20check.PNG)
 
 Changing the search to filter for extensions:
-![Screenshot of search alteration](/images/fix%20search.png)
+![Screenshot of search alteration](/images/fix%20search.PNG)
 
 Screenshot when sort if complete:
-![Screenshot of compelted sort](/images/sorting%20finished.png)
+![Screenshot of compelted sort](/images/sorting%20finished.PNG)
 
