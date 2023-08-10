@@ -10,7 +10,7 @@ A similar picture for VPNns: Hotspot Shield, SetupVPN, & Tunnelbear were all top
 
 But for a niche and less ad/security focused subject – "guitar" the ranking was much better. There were 12 guitar related extensions out of 86 results. Ranking by popularity meant only 4 of these showed in the top 20, compared to the chrome store ranking showing 9 of these. The extensions with the most rankings were in the 20 results.
 
-If not enough results are returned (between 50-150 results) then you will not see the most popular and most relevant extensions in topics like adblocker and VPN. Results where there are only a handful of relevant extensions shown with very few ratings are sorted well by the Chrome Web Store.
+If not enough results are returned (between 50-150 results) then you will not see the most popular and most relevant extensions in topics like adblocker and VPN. Return too many (>300) then the top 20 results become less relevant. THe ideal number of results to re-rank was ~200 when the webstore is saturated with many similar extensions, and there might be some bias/favouring of companies. Results where there are only a handful of relevant extensions shown with very few ratings are sorted well by the Chrome Web Store.
 
 ## Recommendations
 It's best to have an idea of the extension you want before searching on the Chrome Web Store as the algorithm in the Chrome Web Store does poorly at presenting the best options to users. It's also very well known that there are multiple security risks and that these can take months to get resolved by Google. Using the sort by popularity tool will help to make better informed choices and protect your security.
