@@ -64,3 +64,19 @@ async function main(){console.clear();try{await validateUrl();var e=confirm("Sta
 - Type !
 - Select your snippet or start typing its name then press enter.
 
+
+# The Script
+Some screenshots of what to expect from the script
+
+Confirming you want to sort:
+![Screenshot of initation](/images/start%20sorting.PNG)
+
+Checking if you want to filter to extensions:
+![Screenshot of script asking about extension filtering](/images/extensions%20check.png)
+
+Changing the search to filter for extensions:
+![Screenshot of search alteration](/images/fix%20search.png)
+
+Screenshot when sort if complete:
+![Screenshot of compelted sort](/images/sorting%20finished.png)
+
