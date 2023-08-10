@@ -28,7 +28,7 @@ async function stop(reason) {
 
     if (!reason === "auto") {
         console.info(
-            "%cThe script was forcefully stopped\n%cDid I do bad? :(",
+            "%cThe script was force stopped\n%cDid something go wrong? :(",
             "color: orange; font-weight: bold; font-size: 130%;",
             ""
         );
@@ -53,7 +53,8 @@ async function blurPage(state) {
 }
 
 async function validateUrl() {
-    // Valid URL example: 'https://chrome.google.com/webstore/search/PHRASE?_category=extensions'
+    // Valid extensions URL example: 'https://chrome.google.com/webstore/search/PHRASE?_category=extensions'
+    // Adding functionality to continue sort with no filtering or when filtered for themes
     const validHostname = "chrome.google.com",
         validPath = "webstore/search",
         validCategory = "extensions";
@@ -68,15 +69,15 @@ async function validateUrl() {
 
     if (hostname !== validHostname) {
         throw console.error(
-            `%cError incorrect host!\n` +
-                `%cURL hostname must be "${validHostname}"`,
+            `%cError not in Chrome Web Store!\n` +
+                `%cSite should be "${validHostname}"`,
             "color:orange; font-size: 130%; font-weight: bold",
             ""
         );
     } else if (pathFull !== validPath) {
         throw console.error(
-            `%cError incorrect path!\n` +
-                `%cURL path must be "/${validPath}/..."`,
+            `%cError not searching Chrome Web Store!\n` +
+                `%cPath should be "/${validPath}/..."`,
             "color:orange; font-size: 130%; font-weight: bold",
             ""
         );
@@ -85,49 +86,51 @@ async function validateUrl() {
         queryString !== `?hl=${lang}&_category=${validCategory}`
     ) {
         console.warn(
-            `%cError incorrect query string!\n` +
-                `%cThe webstore search category must be "${validCategory}".`,
+            `%cError search not filtered to "${validCategory}" !\n` +
+                `%cRecommend searching for "${validCategory}".`,
             "color:orange; font-size: 130%; font-weight: bold",
             ""
         );
 
         let redirectPrompt = confirm(
-            `ERROR!\n${validCategory === category ? `The URL query string is incorrect.` : `The search category should be "${validCategory}" but is instead "${category}".`}\nWould you like me to automatically correct this?`
+            `ERROR!\n${validCategory === category ? `Search seems broken.` : `Recommend searching for ${validCategory}.`}\nWant to search in ${validCategory}?`
         );
 
         if (redirectPrompt) {
             console.clear();
             console.info(
-                "%cAttempting to correct URL...%c" +
-                    "\nRemember to %crelaunch the script manually%c after the page loads",
+                "%cAttempting to fix search...%c" +
+                    "\nRemember to %crestart Sorting%c after the page loads",
                 "color:orange; font-size: 130%; font-weight: bold",
                 "",
                 "font-weight: bold; color: skyblue; border-bottom: solid skyblue 2px",
                 ""
             );
-            await new Promise(res => setTimeout(res, 5000)); // sleep 5 seconds
+            await new Promise(res => setTimeout(res, 2500)); // sleep 2.5 seconds
             const finalURL = `https://${hostname}${pathname}?_category=${validCategory}`;
 
             try {
-                window.location.assign(finalURL);
                 console.info(
-                    `%cSuccess!\n` + `%cURL has been corrected.`,
+                    `%cSuccess!\n` + `%cTaking you to search for extensions now.`,
                     "color:limegreen; font-size: 130%; font-weight: bold",
                     ""
-                );
+                 );
+                await new Promise(res => setTimeout(res, 1500)); // sleep 1.5 second
+                window.location.assign(finalURL);
+                
             } catch (error) {
                 console.clear();
                 console.error(
-                    `%cFatal error!\n` + `%cURL redirect failed.\n`,
+                    `%cFatal error!\n` + `%cSorry search fix failed.\n`,
                     "color:orange; font-size: 130%; font-weight: bold",
                     ""
                 );
                 throw error;
             }
         } else {
-            throw console.error(
-                `%cFatal error!\n` +
-                    `%cThe query string is incorrect.`,
+            console.info(
+                `%cContinuing sort!\n` +
+                    `%cSearching without filtering for extensions.`,
                 "color:orange; font-size: 130%; font-weight: bold",
                 ""
             );
@@ -142,14 +145,14 @@ async function validateUrl() {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve("success");
-        }, 1000);
+        }, 800);
     });
 }
 
-function sortWebstore(MAX_PAGE_LOADS = 25) {
+function sortWebstore(MAX_PAGE_LOADS = 2) { // was 25. Gives ~200 results which is good for speed and for relevance of top results.
     console.info(
-        "%cBeginning webstore sort!\n" +
-            "%cSit tight, this may take a short moment. The screen will unblur when sorting has concluded.",
+        "%cSorting search results!\n" +
+            "%cThis might take a moment. Be right back.",
         "font-size: 130%; font-weight: bold; color: skyblue;",
         ""
     );
@@ -160,7 +163,7 @@ function sortWebstore(MAX_PAGE_LOADS = 25) {
     let checkEnded = false;
     let newItemCount;
 
-    startLoad(3000);
+    startLoad(100);
     loadMaxCheck();
 
     function startLoad(max) {
@@ -195,7 +198,7 @@ function sortWebstore(MAX_PAGE_LOADS = 25) {
 
         setTimeout(() => {
             startLoad(max);
-        }, 100);
+        }, 500);
     }
 
     function loadMaxCheck() {
@@ -214,7 +217,7 @@ function sortWebstore(MAX_PAGE_LOADS = 25) {
 
         setTimeout(() => {
             loadMaxCheck();
-        }, 100);
+        }, 500);
     }
 
     function sortsort() {
@@ -277,7 +280,7 @@ function sortWebstore(MAX_PAGE_LOADS = 25) {
 
             return item2_rating - item1_rating;
         });
-
+        
         let itemRowsNodeList = document.querySelectorAll(
             '.h-a-x > [role="grid"] > [role="row"]'
         );
@@ -298,9 +301,9 @@ function sortWebstore(MAX_PAGE_LOADS = 25) {
             //console.log(logMsg);
         }
 
-        console.clear();
+        // console.clear();
         console.info(
-            "%cSorting has finished!\n%cEnjoy your significantly improved extension browsing shopping!",
+            "%cSorting finished!!\n%cResults are now ranked by the number of ratings they have!",
             "color: limegreen; font-weight: bold; font-size: 130%;",
             ""
         );
@@ -308,7 +311,7 @@ function sortWebstore(MAX_PAGE_LOADS = 25) {
         console.groupCollapsed("Sorted data info");
         console.table(logArr.slice(1), ["Title", "Rating", "Order"]);
         console.groupEnd();
-
+        
         stop("auto");
         return;
     }
