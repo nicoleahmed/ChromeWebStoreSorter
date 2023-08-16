@@ -4,7 +4,7 @@
 
 Most people are unlikely to scroll very much when searching for results. It could be argued that unless people know what they are looking for, they may select the most popular to review out the top 10 results presented to them.
 
-Some of the most popular extensions would be very hard to find using Google's normal sorting algorithm. For example the following popular antiviruses were more than 100 results down the page: Adblock (165th), uBlock Origin (104th), and Ghostery (181st). Whereas top 10 positions were given to much less popular and scarcely reviewed extensions: Ad Skip Master for Youtube (7th position, 98th Popular), Tube Block (8th position, 93rd popular), and Adkrig (9th position, 87th popular).
+Some of the most popular extensions would be very hard to find using Google's normal sorting algorithm. For example the following popular ad-blockers were more than 100 results down the page: Adblock (165th), uBlock Origin (104th), and Ghostery (181st). Whereas top 10 positions were given to much less popular and scarcely reviewed extensions: Ad Skip Master for Youtube (7th position, 98th Popular), Tube Block (8th position, 93rd popular), and Adkrig (9th position, 87th popular).
 
 A similar picture for VPNns: Hotspot Shield, SetupVPN, & Tunnelbear were all top 10 for popularity but very low ranked in results – 71st, 51st and 61st respectively.
 
